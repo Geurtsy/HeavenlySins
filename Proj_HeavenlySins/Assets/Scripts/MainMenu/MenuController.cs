@@ -9,6 +9,11 @@ public class MenuController : MonoBehaviour {
     [SerializeField] private AudioClip _buttonPress;
     private AudioSource _audioSource;
 
+    private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
     public void BeginSceneChange(string sceneName)
     {
         StartCoroutine(ChangeScene(sceneName));
