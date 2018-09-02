@@ -26,10 +26,8 @@ public class Selectable : MonoBehaviour {
 
     private void OnMouseOver()
     {
-        if(Input.GetMouseButtonDown(1))
+        if(Input.GetMouseButtonDown(1) && UnitManager._selectedObject != null)
         {
-            print("shit..");
-
             InteractionManager interactionManager;
             IInteract[] validInteractions = null;
 

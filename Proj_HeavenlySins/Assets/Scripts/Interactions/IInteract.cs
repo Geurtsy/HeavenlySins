@@ -4,6 +4,8 @@ using UnityEngine;
 
 public interface IInteract {
 
+    List<GameObject> EngagedUnits { get; set; }
+
     string Name { get; set; }
     InteractionManager MyInteractionManager { get; set; }
     float InteractionDistance { get; set; }

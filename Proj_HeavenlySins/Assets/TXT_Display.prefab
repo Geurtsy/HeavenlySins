@@ -49,7 +49,7 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 16
+    m_FontSize: 10
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 0
@@ -58,9 +58,11 @@ MonoBehaviour:
     m_AlignByGeometry: 1
     m_RichText: 0
     m_HorizontalOverflow: 0
-    m_VerticalOverflow: 0
+    m_VerticalOverflow: 1
     m_LineSpacing: 0.8
-  m_Text: Test
+  m_Text: 'Default Text
+
+'
 --- !u!222 &222244261477108074
 CanvasRenderer:
   m_ObjectHideFlags: 1

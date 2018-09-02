@@ -20,8 +20,23 @@ public class InformationDisplay : MonoBehaviour {
 
     private void Update()
     {
-        if(_storedDisplayStrings != _currentDisplayStrings)
-            UpdateDisplayedInformation();
+        if(UnitManager._selectedObject != null)
+        {
+            if(_storedDisplayStrings != _currentDisplayStrings)
+                UpdateDisplayedInformation();
+        }
+        else if(_activeDisplayTxt != null)
+        {
+            ClearDisplayedInformation();
+        }
+    }
+
+    public void ClearDisplayedInformation()
+    {
+        for(int index = 0; index < _activeDisplayTxt.Count; index++)
+            Destroy(_activeDisplayTxt[index].gameObject);
+
+        _activeDisplayTxt = new List<Text>();
     }
 
     private void UpdateDisplayedInformation()
@@ -32,14 +47,15 @@ public class InformationDisplay : MonoBehaviour {
 
         if(activeTxtAmount >= amountToDisplay)
         {
-            for(int index = activeTxtAmount - 1; index > amountToDisplay; index--)
+            for(int index = activeTxtAmount - 1; index >= amountToDisplay; index--)
             {
-                Destroy(_activeDisplayTxt[index]);
+                Destroy(_activeDisplayTxt[index].gameObject);
+                _activeDisplayTxt.RemoveAt(index);
             }
         }
         else
         {
-            for(int index = activeTxtAmount - 1; index < amountToDisplay; index++)
+            for(int index = activeTxtAmount - 1; index < amountToDisplay - 1; index++)
             {
                 _activeDisplayTxt.Add(Instantiate(_displayTextPrefab, _informationPanel).GetComponent<Text>());
             }

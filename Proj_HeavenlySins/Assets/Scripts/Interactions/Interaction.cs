@@ -3,12 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(InteractionManager))]
-public abstract class Interaction : MonoBehaviour, IInteract {
+public class Interaction : MonoBehaviour, IInteract {
     [SerializeField] private string _interactionName;
     [SerializeField] private UnitManager.UnitType[] _validUnitTypes;
     public int _interactionLength;
 
     [SerializeField] private float _interactionDistance;
+
+    private List<GameObject> _enagedUnits;
+
+    
+    public List<GameObject> EngagedUnits
+    {
+        get
+        {
+            return _enagedUnits;
+        }
+        set
+        {
+
+            _enagedUnits = value;
+        }
+    }
 
     public string Name
     {
@@ -48,8 +64,17 @@ public abstract class Interaction : MonoBehaviour, IInteract {
         }
     }
 
+    protected virtual void Start()
+    {
+        _enagedUnits = new List<GameObject>();
+    }
+
     public virtual IEnumerator Interact()
     {
-        yield return null;
+        if(_enagedUnits == null)
+        {
+            StopCoroutine(Interact());
+            yield return null;
+        }
     }
 }

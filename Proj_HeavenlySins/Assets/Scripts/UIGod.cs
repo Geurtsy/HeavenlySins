@@ -16,6 +16,8 @@ public class UIGod : MonoBehaviour {
 
     public void UpdateDropDownMenu(IInteract[] interactions, Vector2 pos)
     {
+        DisableDropDownMenu();
+
         _dropDownMenu.SetActive(true);
 
         foreach(IInteract interaction in interactions)
@@ -27,11 +29,15 @@ public class UIGod : MonoBehaviour {
             _dropDownMenuItems.Add(menuItem);
         }
 
-        _dropDownMenu.transform.position = pos;
+        // _dropDownMenu.transform.position = pos;
     }
 
     public void DisableDropDownMenu()
     {
+
+        if(_dropDownMenu.activeSelf == false)
+            return;
+
         _dropDownMenu.SetActive(false);
         
         for(int index = 0; index < _dropDownMenuItems.Count; index++)
